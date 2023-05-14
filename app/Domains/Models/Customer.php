@@ -5,6 +5,7 @@ namespace App\Domains\Models;
 use App\Domains\Interfaces\CustomerEntityInterface;
 use App\Domains\ValueObjects\EmailValueObject;
 use App\Domains\ValueObjects\PhoneValueObject;
+use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,71 +14,83 @@ class Customer extends Model implements CustomerEntityInterface
     use HasFactory;
 
     protected $fillable = [
-        'first_name', 'last_name', 'date_of_birth', 'phone_number', 'email', 'bank_account_number'
+       'first_name', 'last_name', 'date_of_birth', 'phone_number', 'email', 'bank_account_number'
     ];
-
+    
     public function getId(): ?int
     {
-        return $this->id;
+        return $this->attributes['id'];
+    }
+
+    public function setId(int $id): ?int
+    {
+        return $this->attributes['id'] = $id;
     }
 
     public function getFirstName(): string
     {
-        return $this->firstName;
+        return $this->attributes['first_name'];
     }
 
     public function setFirstName(string $firstName): void
     {
-        $this->firstName = $firstName;
+        $this->attributes['first_name'] = $firstName;
     }
 
     public function getLastName(): string
     {
-        return $this->lastName;
+        return $this->attributes['last_name'];
     }
 
     public function setLastName(string $lastName): void
     {
-        $this->lastName = $lastName;
+        $this->attributes['last_name'] = $lastName;
     }
 
     public function getDateOfBirth(): ?\DateTime
     {
-        return $this->dateOfBirth;
+        if($this->attributes['date_of_birth'] === null){
+            return null;
+        }
+        if(gettype($this->attributes['date_of_birth']) === "string"){
+            return \DateTime::createFromFormat('Y-m-d', $this->attributes['date_of_birth']);
+        }
+        return $this->attributes['date_of_birth'];
     }
 
     public function setDateOfBirth(?\DateTime $dateOfBirth): void
     {
-        $this->dateOfBirth = $dateOfBirth;
+        $this->attributes['date_of_birth'] = $dateOfBirth;
     }
 
     public function getPhoneNumber(): PhoneValueObject
     {
-        return $this->phoneNumber;
+        return $this->attributes['phone_number'];
     }
 
     public function setPhoneNumber(string $phoneNumber): void
     {
-        $this->phoneNumber = $phoneNumber;
+        $this->attributes['phone_number'] = $phoneNumber;
     }
 
     public function getEmail(): EmailValueObject
     {
-        return $this->email;
+        return $this->attributes['email'];
     }
 
     public function setEmail(EmailValueObject $email): void
     {
-        $this->email = $email;
+        $this->attributes['email'] = $email;
     }
 
     public function getBankAccountNumber(): string
     {
-        return $this->bankAccountNumber;
+        return $this->attributes['bank_account_number'];
     }
 
     public function setBankAccountNumber(string $bankAccountNumber): void
     {
-        $this->bankAccountNumber = $bankAccountNumber;
+        $this->attributes['bank_account_number'] = $bankAccountNumber;
     }
+
 }
