@@ -23,13 +23,13 @@ class PhoneValueObject
         }
     }
 
-    // public function __toString()
-    // {
-    //     return $this->value;
-    // }
+    public function __toString()
+    {
+        return $this->value;
+    }
 
-    // public function isEqualTo(self $phone): bool
-    // {
-    //     return $this->value === $phone->value;
-    // }
+    public function isEqualTo(self $phone): bool
+    {
+        return $this->value === $phone->value;
+    }
 }
