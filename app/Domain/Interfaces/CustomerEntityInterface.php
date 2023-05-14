@@ -5,7 +5,7 @@ namespace App\Domains\Interfaces;
 use App\Domains\ValueObjects\EmailValueObject;
 use App\Domains\ValueObjects\PhoneValueObject;
 
-interface CustomerEntity
+interface CustomerEntityInterface
 {
     public function getId(): int;
 
