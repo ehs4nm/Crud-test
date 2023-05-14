@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domains\Models;
+namespace App\Domains\ValueObjects;
 
 use libphonenumber\NumberParseException;
 use libphonenumber\PhoneNumber;

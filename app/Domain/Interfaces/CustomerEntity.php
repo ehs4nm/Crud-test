@@ -2,8 +2,8 @@
 
 namespace App\Domains\Interfaces;
 
-use App\Domains\Models\EmailValueObject;
-
+use App\Domains\ValueObjects\EmailValueObject;
+use App\Domains\ValueObjects\PhoneValueObject;
 
 interface CustomerEntity
 {
@@ -21,7 +21,7 @@ interface CustomerEntity
 
     public function setDateOfBirth(?\DateTime $dateOfBirth): void;
 
-    public function getPhoneNumber(): string;
+    public function getPhoneNumber(): PhoneValueObject;
 
     public function setPhoneNumber(string $phoneNumber): void;
 
