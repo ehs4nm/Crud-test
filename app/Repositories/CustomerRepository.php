@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domains\Repositories;
+namespace App\Repositories;
 
 use App\Domains\Interfaces\CustomerRepositoryInterface;
 use App\Domains\Models\Customer;
@@ -22,30 +22,9 @@ class CustomerRepository implements CustomerRepositoryInterface
         ]);
 
         $customer->setId($id);
+        $customer->exists = true;
 
         return $customer;
-    }
-
-    public function getById(int $id): ?Customer
-    {
-        $data = DB::table('customers')->find($id);
-
-        if (!$data) {
-            return null;
-        }
-
-        return $this->mapToCustomer($data);
-    }
-
-    public function getByEmail(EmailValueObject $email): ?Customer
-    {
-        $data = DB::table('customers')->where('email', $email);
-
-        if (!$data) {
-            return null;
-        }
-
-        return $this->mapToCustomer($data);
     }
 
     public function update(Customer $customer): bool
@@ -80,16 +59,40 @@ class CustomerRepository implements CustomerRepositoryInterface
         return $this->mapToCustomer($data);
     }
 
+    public function getById(int $id): ?Customer
+    {
+        $data = DB::table('customers')->find($id);
+
+        if (!$data) {
+            return null;
+        }
+
+        return $this->mapToCustomer($data);
+    }
+
+    public function getByEmail(EmailValueObject $email): ?Customer
+    {
+        $data = DB::table('customers')->where('email', $email);
+
+        if (!$data) {
+            return null;
+        }
+
+        return $this->mapToCustomer($data);
+    }
+
+
     private function mapToCustomer($data): Customer
     {
         return new Customer(
-            $data->id,
-            $data->first_name,
-            $data->last_name,
-            $data->date_of_birth ? new \DateTime($data->date_of_birth) : null,
-            new PhoneValueObject($data->phone_number),
-            new EmailValueObject($data->email),
-            $data->bank_account_number
+           [
+            'id' => $data->id,
+            'first_name' =>    $data->first_name,
+            'last_name' =>   $data->last_name,
+            'date_of_birth' =>   $data->date_of_birth ? new \DateTime($data->date_of_birth) : null,
+            'phone_number' =>  new PhoneValueObject($data->phone_number),
+            'email' =>  new EmailValueObject($data->email),
+            'bank_account_number' => $data->bank_account_number]
         );
     }
 }
