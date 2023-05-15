@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Application\DTO\CustomerDTO;
 use App\Domains\Interfaces\CustomerRepositoryInterface;
 use App\Domains\Models\Customer;
 use App\Domains\ValueObjects\EmailValueObject;
@@ -34,7 +35,7 @@ class CustomerRepository implements CustomerRepositoryInterface
         return $customer;
     }
 
-    public function update(Customer $customer): bool
+    public function update(CustomerDTO $customer): bool
     {
         $result = DB::table('customers')->where('id', $customer->getId())->update([
             'first_name' => $customer->getFirstName(),
