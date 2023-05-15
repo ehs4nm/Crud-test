@@ -20,6 +20,53 @@ class CustomerTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function testCanFindAllCustomer()
+    {
+        // Create two customers
+        $customer1Data = [
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+            'date_of_birth' => '1980-01-01',
+            'phone_number' => new PhoneValueObject('+1 (123) 456-7890'),
+            'email' => new EmailValueObject('john.doe@example.com'),
+            'bank_account_number' => '12345678901234',
+        ];
+
+        $customer2Data = [
+            'first_name' => 'Jane',
+            'last_name' => 'Smith',
+            'date_of_birth' => '1990-02-02',
+            'phone_number' => new PhoneValueObject('+1 (987) 654-3210'),
+            'email' => new EmailValueObject('jane.smith@example.com'),
+            'bank_account_number' => '98765432109876',
+        ];
+
+        $customerRepository = new CustomerRepository();
+        $customerRepository->create(new Customer($customer1Data));
+        $customerRepository->create(new Customer($customer2Data));
+        // Retrieve all customers
+        $customers = $customerRepository->findAll();
+
+        // Assert that there are two customers
+        $this->assertCount(2, $customers);
+
+        // Assert that the retrieved customers match the created customers (returned object is an array of Customers)
+        $this->assertEquals($customer1Data['first_name'], $customers[0]->first_name);
+        $this->assertEquals($customer1Data['last_name'], $customers[0]->last_name);
+        $this->assertEquals($customer1Data['date_of_birth'], $customers[0]->date_of_birth);
+        $this->assertEquals($customer1Data['phone_number'], $customers[0]->phone_number);
+        $this->assertEquals($customer1Data['email'], $customers[0]->email);
+        $this->assertEquals($customer1Data['bank_account_number'], $customers[0]->bank_account_number);
+
+        $this->assertEquals($customer2Data['first_name'], $customers[1]->first_name);
+        $this->assertEquals($customer2Data['last_name'], $customers[1]->last_name);
+        $this->assertEquals($customer2Data['date_of_birth'], $customers[1]->date_of_birth);
+        $this->assertEquals($customer2Data['phone_number'], $customers[1]->phone_number);
+        $this->assertEquals($customer2Data['email'], $customers[1]->email);
+        $this->assertEquals($customer2Data['bank_account_number'], $customers[1]->bank_account_number);
+    }
+
+
     public function testCanCreateCustomer()
     {
         // Create a new customer
