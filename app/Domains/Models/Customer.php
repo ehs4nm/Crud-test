@@ -49,12 +49,12 @@ class Customer extends Model implements CustomerEntityInterface
 
     public function getDateOfBirth(): ?\DateTime
     {
-        if($this->attributes['date_of_birth'] === null){
-            return null;
-        }
-        if(gettype($this->attributes['date_of_birth']) === "string"){
+        if($this->attributes['date_of_birth'] === null) return null;
+
+        if(! $this->attributes['date_of_birth'] instanceof \DateTime){
             return \DateTime::createFromFormat('Y-m-d', $this->attributes['date_of_birth']);
         }
+
         return $this->attributes['date_of_birth'];
     }
 
@@ -65,7 +65,8 @@ class Customer extends Model implements CustomerEntityInterface
 
     public function getPhoneNumber(): PhoneValueObject
     {
-        return $this->attributes['phone_number'];
+        return new PhoneValueObject($this->attributes['phone_number']);
+        // return $this->attributes['phone_number'];
     }
 
     public function setPhoneNumber(string $phoneNumber): void
@@ -75,7 +76,8 @@ class Customer extends Model implements CustomerEntityInterface
 
     public function getEmail(): EmailValueObject
     {
-        return $this->attributes['email'];
+        return new EmailValueObject($this->attributes['email']);
+        // return $this->attributes['email'];
     }
 
     public function setEmail(EmailValueObject $email): void
