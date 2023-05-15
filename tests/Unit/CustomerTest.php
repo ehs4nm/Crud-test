@@ -1,7 +1,8 @@
 <?php
 
-namespace Tests\Unit\Domains\Models;
+namespace Tests\Unit;
 
+use App\Application\DTO\CustomerDTO;
 use App\Domains\Models\Customer;
 use App\Domains\ValueObjects\EmailValueObject;
 use App\Domains\ValueObjects\PhoneValueObject;
@@ -169,7 +170,7 @@ class CustomerTest extends TestCase
         
         // dd($customer->id,$customer->exists, $customer->update($newData));
 
-        $customerRepository->update($customer);
+        $customerRepository->update(CustomerDTO::fromEloquent($customer));
 
         $this->assertDatabaseHas('customers', [
             'first_name' => 'ehsan',
