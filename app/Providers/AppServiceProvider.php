@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Domains\Factories\CustomerFactory;
+use App\Domains\Interfaces\CustomerFactoryInterface;
+use App\Domains\Interfaces\CustomerRepositoryInterface;
+use App\Repositories\CustomerRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -12,15 +16,23 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(
-            App\Domains\Interfaces\CustomerFactoryInterface::class,
-            App\Factories\CustomerModelFactory::class,
+            CustomerRepositoryInterface::class,
+            CustomerRepository::class,
         );
 
         $this->app->bind(
-            App\Domains\Interfaces\CustomerRepositoryInterface::class,
-            App\Repositories\CustomerRepository::class,
+            CustomerFactoryInterface::class,
+            CustomerFactory::class,
         );
 
+        // $this->app
+        //     ->when(HttpControllers\CustomerController::class)
+        //     ->needs(UseCases\CreateCustomer\CreateCustomerInputPort::class)
+        //     ->give(function ($app) {
+        //         return $app->make(UseCases\CreateCustomer\CreateCustomerInteractor::class, [
+        //             'output' => $app->make(Presenters\CreateCustomerHttpPresenter::class),
+        //         ]);
+        //     });
 
     }
 
