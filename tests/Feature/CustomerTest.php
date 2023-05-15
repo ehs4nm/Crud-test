@@ -1,5 +1,5 @@
 <?php
-namespace Tests\Unit;
+namespace Tests\Feature;
 
 use App\Application\UseCases\Customer\Commands\StoreCustomerCommand;
 use App\Domains\Factories\CustomerFactory;
