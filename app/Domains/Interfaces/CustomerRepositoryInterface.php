@@ -2,6 +2,7 @@
 
 namespace App\Domains\Interfaces;
 
+use App\Application\DTO\CustomerDTO;
 use App\Domains\Models\Customer;
 use App\Domains\ValueObjects\EmailValueObject;
 use App\Domains\ValueObjects\PhoneValueObject;
@@ -12,7 +13,7 @@ interface CustomerRepositoryInterface
 
     public function getById(int $id): ?Customer;
 
-    public function update(Customer $customer): bool;
+    public function update(CustomerDTO $customer): bool;
 
     public function delete(int $id): bool;
 

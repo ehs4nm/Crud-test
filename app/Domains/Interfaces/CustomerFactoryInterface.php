@@ -6,5 +6,5 @@ use App\Domains\Models\Customer;
 
 interface CustomerFactoryInterface
 {
-    public function create(array $data): Customer;
+    public function new(array $data): Customer;
 }
