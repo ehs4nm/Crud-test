@@ -19,4 +19,6 @@ interface CustomerRepositoryInterface
     public function getByEmail(EmailValueObject $email): ?Customer;
 
     public function getByPhone(PhoneValueObject $phone): ?Customer;
+
+    public function findAll(): Array;
 }

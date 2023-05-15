@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\DB;
 
 class CustomerRepository implements CustomerRepositoryInterface
 {
+
+    public function findAll(): array
+    {
+        $customers = DB::table('customers')->get()->toArray();
+        return $customers;
+    }
+
     public function create(Customer $customer): Customer
     {
         $id = DB::table('customers')->insertGetId([
