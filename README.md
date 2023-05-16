@@ -65,3 +65,18 @@ During the project different aspects of the project is tested and below you may 
 
 ![](./docs/test-results.png)
 
+
+# HOW TO USE THE CODE BASE
+##UP AND RUNNING
+
+   (ongoing proccess of dockerizing the project) You may run the whole project as container using below:
+
+    # for the first time use 
+    docker-compose build
+    # then run up -d run containers in a dispatched mode
+    docker-compose up -d
+    
+## You may access Swagger documentation
+
+run --> php artisan l5-swagger:generate
+and browse http://127.0.0.1:8000/api/documentation
