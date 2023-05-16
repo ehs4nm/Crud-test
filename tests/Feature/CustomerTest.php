@@ -86,7 +86,7 @@ class CustomerTest extends TestCase
             'last_name' => 'Doe',
             'date_of_birth' => '1985-10-15',
             'email' => 'johndoe@example.com',
-            'phone_number' => '+1234567890',
+            'phone_number' => '+18026872706',
             'bank_account_number' => '9876543210',
         ];
 
