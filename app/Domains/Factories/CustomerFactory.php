@@ -36,7 +36,7 @@ class CustomerFactory extends Factory
             'date_of_birth' => $faker->date('Y-m-d'),
             'phone_number' => $faker->phoneNumber,
             'email' => $faker->email,
-            'bank_account_number' => $faker->bankAccountNumber,
+            'bank_account_number' => $faker->iban('NL'),
         ];
         
         $attributes = array_replace($defaults, $attributes);

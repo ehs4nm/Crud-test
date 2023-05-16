@@ -87,7 +87,7 @@ class CustomerTest extends TestCase
             'date_of_birth' => '1985-10-15',
             'email' => 'johndoe@example.com',
             'phone_number' => '+18026872706',
-            'bank_account_number' => '9876543210',
+            'bank_account_number' => 'NL91ABNA0417164300',
         ];
 
         $response = $this->put(route('customers.update', ['customer' => $customer->id]), [
