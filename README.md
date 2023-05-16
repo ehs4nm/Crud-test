@@ -5,29 +5,29 @@ I have gathered some steps i've done here:
 
 # Project Structure Overview
 Understanding the project structure is essential for maintaining and extending the codebase. Here's an overview of the key directories in the project:
-App
-├───Adapters
-│   ├───Presenters
-│   └───ViewModels
-├───Application
-│   ├───DTO
-│   ├───Mappers
-│   └───UseCases
-│       └───Customer
-│           ├───Commands
-│           └───Queries
-├───Console
-├───Domains
-│   ├───Factories
-│   ├───Interfaces
-│   ├───Models
-│   └───ValueObjects
-├───Exceptions
-├───Http
-│   ├───Controllers
-│   └───Middleware
-├───Providers
-└───Repositories
+  - App
+      - Adapters
+          - Presenters
+          - ViewModels
+      - Application
+          - DTO
+          - Mappers
+          - UseCases
+          - Customer
+              - Commands
+              - Queries
+      - Domains
+          - Factories
+          - Interfaces
+          - Models
+          - ValueObjects
+      - Exceptions
+      - Http
+          - Controllers
+          - Middleware
+      - Providers
+      - Repositories
+
 
 I haven't seperated the presention layer (also the Adapters folder is there for any chance of refactoring) and all tests are in laravel default folder (it could be placed within each corresponding layer of my application.)
 I have useed [this](https://github.com/Orphail/laravel-ddd "a suggested laravel DDD and CA, without having to give away most of the features we love from Laravel"), [this](https://dev.to/bdelespierre/how-to-implement-clean-architecture-with-laravel-2f2i " a working implementation of the Clean Architecture principles inside a Laravel app") and [this](https://github.com/bdelespierre/laravel-clean-architecture-demo) for adapting the CA structure,
