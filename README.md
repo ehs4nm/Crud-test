@@ -52,8 +52,8 @@ I have useed [this](https://github.com/Orphail/laravel-ddd "a suggested laravel 
 | 14 	| clone the repository in a new github repository in private mode 	| Done ✅    |
 | 15 	| share with ID: ```mason-chase```               	| Done ✅    |
 | 16 	| Event sourcing                     	| Not yet 	|
-| 17 	| Docker-compose       	| Not yet 	|
-| 18 	| Swagger 	|   Not yet 	|
+| 17 	| Docker-compose       	| ongoing 	|
+| 18 	| Swagger 	|    Done ✅ 	|
 | 19 	| Web UI      	| Not yet 	|
  
 
