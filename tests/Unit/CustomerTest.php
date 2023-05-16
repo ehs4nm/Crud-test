@@ -28,16 +28,16 @@ class CustomerTest extends TestCase
             'first_name' => 'John',
             'last_name' => 'Doe',
             'date_of_birth' => '1980-01-01',
-            'phone_number' => new PhoneValueObject('+1 (123) 456-7890'),
+            'phone_number' => new PhoneValueObject('+18026879999'),
             'email' => new EmailValueObject('john.doe@example.com'),
-            'bank_account_number' => '12345678901234',
+            'bank_account_number' => 'NL10NGKK6133690858',
         ];
 
         $customer2Data = [
             'first_name' => 'Jane',
             'last_name' => 'Smith',
             'date_of_birth' => '1990-02-02',
-            'phone_number' => new PhoneValueObject('+1 (987) 654-3210'),
+            'phone_number' => new PhoneValueObject('+18026870000'),
             'email' => new EmailValueObject('jane.smith@example.com'),
             'bank_account_number' => '98765432109876',
         ];
@@ -75,9 +75,9 @@ class CustomerTest extends TestCase
             'first_name' => 'John',
             'last_name' => 'Doe',
             'date_of_birth' => '1980-01-01',
-            'phone_number' => new PhoneValueObject('+1 (123) 456-7890'),
+            'phone_number' => new PhoneValueObject('+18026872706'),
             'email' => new EmailValueObject('john.doe@example.com'),
-            'bank_account_number' => '12345678901234',
+            'bank_account_number' => 'NL10NGKK6133690858',
         ];
 
         $customer = new Customer($customerData);
@@ -100,9 +100,9 @@ class CustomerTest extends TestCase
             'first_name' => 'John',
             'last_name' => 'Doe',
             'date_of_birth' => '1980-01-01',
-            'phone_number' => '+11234567890',
+            'phone_number' => '+18026872706',
             'email' => 'john.doe@example.com',
-            'bank_account_number' => '12345678901234'
+            'bank_account_number' => 'NL10NGKK6133690858'
         ]);
 
     }
@@ -114,7 +114,7 @@ class CustomerTest extends TestCase
             'first_name' => 'John',
             'last_name' => 'Doe',
             'date_of_birth' => '1990-01-01',
-            'phone_number' => new PhoneValueObject('+1 (123) 456-7890'),
+            'phone_number' => new PhoneValueObject('+18026870000'),
             'email' => new EmailValueObject('john.doe@example.com'),
             'bank_account_number' => '123456789',
         ];
@@ -146,9 +146,9 @@ class CustomerTest extends TestCase
             'first_name' => 'John',
             'last_name' => 'Doe',
             'date_of_birth' => '1980-01-01',
-            'phone_number' => new PhoneValueObject('+1 (123) 456-7890'),
+            'phone_number' => new PhoneValueObject('+18026872706'),
             'email' => new EmailValueObject('john.doe@example.com'),
-            'bank_account_number' => '12345678901234',
+            'bank_account_number' => 'NL10NGKK6133690858',
         ];
 
         $customer = new Customer($customerData);
@@ -161,7 +161,7 @@ class CustomerTest extends TestCase
             'first_name' => 'ehsan',
             'last_name' => 'mohiti',
             'date_of_birth' => '1990-09-09',
-            'phone_number' => new PhoneValueObject('+1 (123) 456-0000'),
+            'phone_number' => new PhoneValueObject('+18026870000'),
             'email' => new EmailValueObject('mohiti.ehsan@gmail.com'),
             'bank_account_number' => '44445678901234',
         ];
@@ -176,7 +176,7 @@ class CustomerTest extends TestCase
             'first_name' => 'ehsan',
             'last_name' => 'mohiti',
             'date_of_birth' => '1990-09-09',
-            'phone_number' => '+11234560000',
+            'phone_number' => '+18026870000',
             'email' => 'mohiti.ehsan@gmail.com',
             'bank_account_number' => '44445678901234'
         ]);
@@ -190,7 +190,7 @@ class CustomerTest extends TestCase
             'first_name' => 'John',
             'last_name' => 'Doe',
             'date_of_birth' => '1980-01-01',
-            'phone_number' => new PhoneValueObject('+1 (123) 456-7890'),
+            'phone_number' => new PhoneValueObject('+18026870000'),
             'email' => new EmailValueObject('john.doe@example.com'),
             'bank_account_number' => '123456789',
         ];
