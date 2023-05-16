@@ -45,17 +45,16 @@ I have useed [this](https://github.com/Orphail/laravel-ddd "a suggested laravel 
 | 7 	| Use PHP 8.2                               	    | Done ✅ 	|
 | 8 	| validate the phone number (Google LibPhoneNumber) | Done ✅ 	|
 | 9 	| Store the phone number (varchar(20))              | Done ✅    |
-| 10 	|                                                   | Done ✅ 	|
+| 10 	| A Valid email and a valid bank account check      | Done ✅ 	|
 | 11 	| Customers must be unique in database: By ```Firstname```, ```Lastname``` and ```DateOfBirth```. 	| Done ✅ 	|
 | 12 	| Email must be unique in the database.             | Done ✅ 	|
 | 13 	| create a pull request (code review)               | Done ✅ 	|
 | 14 	| clone the repository in a new github repository in private mode 	| Done ✅    |
 | 15 	| share with ID: ```mason-chase```               	| Done ✅    |
 | 16 	| Event sourcing                     	| Not yet 	|
-| 17 	| A Valid email and a valid bank account check       	| Not yet 	|
-| 18 	| Docker-compose that loads database service automatically with ```docker-compose up``` 	|   Not yet 	|
+| 17 	| Docker-compose       	| Not yet 	|
+| 18 	| Swagger 	|   Not yet 	|
 | 19 	| Web UI      	| Not yet 	|
-| 20 	| Swagger     	| Not yet 	|
  
 
 * I have done a lot of researches to decide on the architecture (CA) I know it needs more work and updates. Presentation layer is missing and needs to be addressed. I just made a few choice to implement it.
