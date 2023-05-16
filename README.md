@@ -1,4 +1,5 @@
 # Laravel CRUD Test Assignment
+
 This repository contains the implementation of my Laravel CRUD Test Assignment. The assignment includes various tasks related to Test-Driven Development (TDD), Domain-Driven Design (DDD), Behavior-Driven Development (BDD), Clean Architecture, and other stuff (all nice challenging 😃). The goal of the assignment is to showcase your understanding and proficiency in these areas. 
 I have gathered some steps i've done here:
 
