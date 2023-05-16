@@ -15,12 +15,17 @@ class PhoneValueObject
     {
         $phoneNumberUtil = PhoneNumberUtil::getInstance();
 
+
         try {
-            $phoneNumber = $phoneNumberUtil->parse($value, 'US'); 
+            $phoneNumber = $phoneNumberUtil->parse($value, 'US');
+            if (!$phoneNumberUtil->isValidNumber($phoneNumber)) {
+                throw new \DomainException("Invalid phone number '{$value}'.");
+            }
             $this->value = $phoneNumberUtil->format($phoneNumber, PhoneNumberFormat::E164);
         } catch (NumberParseException $e) {
             throw new \DomainException("Invalid phone number '{$value}'.");
         }
+        
     }
 
     public function __toString()
