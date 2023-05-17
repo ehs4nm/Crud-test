@@ -78,5 +78,5 @@ During the project different aspects of the project is tested and below you may 
     
 ## You may access Swagger documentation
 
-run --> php artisan l5-swagger:generate
-and browse http://127.0.0.1:8000/api/documentation
+
+and browse http://127.0.0.1/api/documentation

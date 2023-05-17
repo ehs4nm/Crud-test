@@ -39,7 +39,6 @@ RUN composer update --no-interaction
 # Generate application key
 RUN php artisan key:generate
 
-
 # Generate documention
 RUN php artisan l5-swagger:generate
 
