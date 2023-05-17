@@ -31,7 +31,7 @@ use Symfony\Component\HttpFoundation\Response;
  *     )
  * )
  *  * @OA\Server(
- *     url="http://localhost:8000",
+ *     url="http://localhost",
  *     description="API server"
  * )
  */
@@ -95,7 +95,7 @@ class CustomerController extends Controller
     }
 
     /**
-     * @OA\post(
+     * @OA\Post(
      *     path="/api/customers",
      *     tags={"customers"},
      *     summary="Add new customer in database",
@@ -131,7 +131,7 @@ class CustomerController extends Controller
     }
 
     /**
-     * @OA\patch(
+     * @OA\Patch(
      *     path="/api/customers/{customer}",
      *     tags={"customers"},
      *     summary="update existing customer on database",
