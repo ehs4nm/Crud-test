@@ -51,17 +51,32 @@ I have useed [this](https://github.com/Orphail/laravel-ddd "a suggested laravel 
 | 13 	| create a pull request (code review)               | Done ✅ 	|
 | 14 	| clone the repository in a new github repository in private mode 	| Done ✅    |
 | 15 	| share with ID: ```mason-chase```               	| Done ✅    |
-| 16 	| Event sourcing                     	| Not yet 	|
-| 17 	| Docker-compose       	| Not yet 	|
-| 18 	| Swagger 	|   Not yet 	|
+| 16 	| Event sourcing                     	| partially 	|
+| 17 	| Docker-compose       	| ongoing 	|
+| 18 	| Swagger 	|    Done ✅ 	|
 | 19 	| Web UI      	| Not yet 	|
  
 
 * I have done a lot of researches to decide on the architecture (CA) I know it needs more work and updates. Presentation layer is missing and needs to be addressed. I just made a few choice to implement it.
-
+* For event sourcing, I'm attempting to incorporate the concept of Command-Query Responsibility Segregation (CQRS). It has been a little confusing, but unfortunately, I haven't been able to dedicate more time to it due to an impending deadline for task delivery. However, I recognize that it's an interesting challenge and I intend to invest more time in exploring and working on it in the future.
 
 ## TEST RESULTS
 During the project different aspects of the project is tested and below you may see the test results.
 
 ![](./docs/test-results.png)
 
+
+# HOW TO USE THE CODE BASE
+##UP AND RUNNING
+
+   (ongoing proccess of dockerizing the project) You may run the whole project as container using below:
+
+    # for the first time use 
+    docker-compose build
+    # then run up -d run containers in a dispatched mode
+    docker-compose up -d
+    
+## You may access Swagger documentation
+
+run --> php artisan l5-swagger:generate
+and browse http://127.0.0.1:8000/api/documentation

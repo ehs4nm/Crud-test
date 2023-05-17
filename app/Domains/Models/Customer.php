@@ -2,12 +2,16 @@
 
 namespace App\Domains\Models;
 
+use App\Application\Events\Customer\CustomerCreated;
+use App\Application\Events\Customer\CustomerDeleted;
+use App\Application\Events\Customer\CustomerUpdated;
 use App\Domains\Interfaces\CustomerEntityInterface;
 use App\Domains\ValueObjects\EmailValueObject;
 use App\Domains\ValueObjects\PhoneValueObject;
 use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Ramsey\Uuid\Uuid;
 
 class Customer extends Model implements CustomerEntityInterface
 {
@@ -16,6 +20,35 @@ class Customer extends Model implements CustomerEntityInterface
     protected $fillable = [
        'first_name', 'last_name', 'date_of_birth', 'phone_number', 'email', 'bank_account_number'
     ];
+    
+    public static function createWithAttributes(array $attributes): Customer
+    {
+        $attributes['uuid'] = (string) Uuid::uuid4();
+
+        event(new CustomerCreated($attributes));
+
+        return static::uuid($attributes['uuid']);
+    }
+
+    public function UpdateWithAttributes(array $attributes): void
+    {
+        $this->fill($attributes);
+
+        $this->save();
+
+        event(new CustomerUpdated($this->toArray()));
+    }
+
+    public function delete(): void
+    {
+        $customerId = $this->getKey();
+        
+        parent::delete();
+        
+        event(new CustomerDeleted($customerId));
+    }
+
+
     
     public function getId(): ?int
     {
@@ -95,4 +128,11 @@ class Customer extends Model implements CustomerEntityInterface
         $this->attributes['bank_account_number'] = $bankAccountNumber;
     }
 
+        /*
+     * A helper method to quickly retrieve an account by uuid.
+     */
+    public static function uuid(string $uuid): ?Customer
+    {
+        return static::where('uuid', $uuid)->first();
+    }
 }

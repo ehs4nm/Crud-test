@@ -25,20 +25,23 @@ WORKDIR /var/www/html
 # Copy the project files to the working directory
 COPY . .
 
+# Set the working directory
+WORKDIR /var/www/html
+
+# Copy the project files to the working directory
+COPY . .
+
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Install project dependencies
-RUN composer install --no-interaction
+RUN composer update --no-interaction
 
 # Generate application key
 RUN php artisan key:generate
 
 
-RUN composer update
-
-# Generate documentation
-RUN php artisan l5-swagger:generate 
+# Generate documention
+RUN php artisan l5-swagger:generate
 
 # Set up Apache virtual host
 COPY laravel.conf /etc/apache2/sites-available/laravel.conf
