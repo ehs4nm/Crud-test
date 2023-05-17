@@ -3,6 +3,8 @@
 namespace App\Domains\Models;
 
 use App\Application\Events\Customer\CustomerCreated;
+use App\Application\Events\Customer\CustomerDeleted;
+use App\Application\Events\Customer\CustomerUpdated;
 use App\Domains\Interfaces\CustomerEntityInterface;
 use App\Domains\ValueObjects\EmailValueObject;
 use App\Domains\ValueObjects\PhoneValueObject;
@@ -21,21 +23,31 @@ class Customer extends Model implements CustomerEntityInterface
     
     public static function createWithAttributes(array $attributes): Customer
     {
-        /*
-         * Let's generate a uuid.
-         */
         $attributes['uuid'] = (string) Uuid::uuid4();
 
-        /*
-         * The account will be created inside this event using the generated uuid.
-         */
         event(new CustomerCreated($attributes));
 
-        /*
-         * The uuid will be used the retrieve the created account.
-         */
         return static::uuid($attributes['uuid']);
     }
+
+    public function UpdateWithAttributes(array $attributes): void
+    {
+        $this->fill($attributes);
+
+        $this->save();
+
+        event(new CustomerUpdated($this->toArray()));
+    }
+
+    public function delete(): void
+    {
+        $customerId = $this->getKey();
+        
+        parent::delete();
+        
+        event(new CustomerDeleted($customerId));
+    }
+
 
     
     public function getId(): ?int
@@ -116,4 +128,11 @@ class Customer extends Model implements CustomerEntityInterface
         $this->attributes['bank_account_number'] = $bankAccountNumber;
     }
 
+        /*
+     * A helper method to quickly retrieve an account by uuid.
+     */
+    public static function uuid(string $uuid): ?Customer
+    {
+        return static::where('uuid', $uuid)->first();
+    }
 }
