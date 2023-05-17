@@ -2,12 +2,14 @@
 
 namespace App\Domains\Models;
 
+use App\Application\Events\Customer\CustomerCreated;
 use App\Domains\Interfaces\CustomerEntityInterface;
 use App\Domains\ValueObjects\EmailValueObject;
 use App\Domains\ValueObjects\PhoneValueObject;
 use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Ramsey\Uuid\Uuid;
 
 class Customer extends Model implements CustomerEntityInterface
 {
@@ -16,6 +18,25 @@ class Customer extends Model implements CustomerEntityInterface
     protected $fillable = [
        'first_name', 'last_name', 'date_of_birth', 'phone_number', 'email', 'bank_account_number'
     ];
+    
+    public static function createWithAttributes(array $attributes): Customer
+    {
+        /*
+         * Let's generate a uuid.
+         */
+        $attributes['uuid'] = (string) Uuid::uuid4();
+
+        /*
+         * The account will be created inside this event using the generated uuid.
+         */
+        event(new CustomerCreated($attributes));
+
+        /*
+         * The uuid will be used the retrieve the created account.
+         */
+        return static::uuid($attributes['uuid']);
+    }
+
     
     public function getId(): ?int
     {
