@@ -19,31 +19,36 @@ RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl bcmath gd
 # Enable Apache modules
 RUN a2enmod rewrite
 
-# Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# Set the working directory
+WORKDIR /var/www/html
+
+# Copy the project files to the working directory
+COPY . .
 
 # Set the working directory
 WORKDIR /var/www/html
 
-# Clone Laravel repository
-RUN git clone --branch 10.x https://github.com/laravel/laravel.git .
+# Copy the project files to the working directory
+COPY . .
 
-# Install Laravel dependencies
-RUN composer install --no-interaction
+# Install Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+RUN composer update --no-interaction
 
 # Generate application key
 RUN php artisan key:generate
+
+
+# Generate documention
+RUN php artisan l5-swagger:generate
 
 # Set up Apache virtual host
 COPY laravel.conf /etc/apache2/sites-available/laravel.conf
 RUN a2ensite laravel.conf
 RUN a2dissite 000-default.conf
 
-# Install PHPMyAdmin
-RUN apt-get install -y phpmyadmin
-RUN ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
-
-# Expose ports
+# Expose port
 EXPOSE 80
 
 # Start Apache server
