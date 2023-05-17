@@ -5,29 +5,29 @@ I have gathered some steps i've done here:
 
 # Project Structure Overview
 Understanding the project structure is essential for maintaining and extending the codebase. Here's an overview of the key directories in the project:
-App
-├───Adapters
-│   ├───Presenters
-│   └───ViewModels
-├───Application
-│   ├───DTO
-│   ├───Mappers
-│   └───UseCases
-│       └───Customer
-│           ├───Commands
-│           └───Queries
-├───Console
-├───Domains
-│   ├───Factories
-│   ├───Interfaces
-│   ├───Models
-│   └───ValueObjects
-├───Exceptions
-├───Http
-│   ├───Controllers
-│   └───Middleware
-├───Providers
-└───Repositories
+  - App
+      - Adapters
+          - Presenters
+          - ViewModels
+      - Application
+          - DTO
+          - Mappers
+          - UseCases
+          - Customer
+              - Commands
+              - Queries
+      - Domains
+          - Factories
+          - Interfaces
+          - Models
+          - ValueObjects
+      - Exceptions
+      - Http
+          - Controllers
+          - Middleware
+      - Providers
+      - Repositories
+
 
 I haven't seperated the presention layer (also the Adapters folder is there for any chance of refactoring) and all tests are in laravel default folder (it could be placed within each corresponding layer of my application.)
 I have useed [this](https://github.com/Orphail/laravel-ddd "a suggested laravel DDD and CA, without having to give away most of the features we love from Laravel"), [this](https://dev.to/bdelespierre/how-to-implement-clean-architecture-with-laravel-2f2i " a working implementation of the Clean Architecture principles inside a Laravel app") and [this](https://github.com/bdelespierre/laravel-clean-architecture-demo) for adapting the CA structure,
@@ -45,17 +45,16 @@ I have useed [this](https://github.com/Orphail/laravel-ddd "a suggested laravel 
 | 7 	| Use PHP 8.2                               	    | Done ✅ 	|
 | 8 	| validate the phone number (Google LibPhoneNumber) | Done ✅ 	|
 | 9 	| Store the phone number (varchar(20))              | Done ✅    |
-| 10 	|                                                   | Done ✅ 	|
+| 10 	| A Valid email and a valid bank account check      | Done ✅ 	|
 | 11 	| Customers must be unique in database: By ```Firstname```, ```Lastname``` and ```DateOfBirth```. 	| Done ✅ 	|
 | 12 	| Email must be unique in the database.             | Done ✅ 	|
 | 13 	| create a pull request (code review)               | Done ✅ 	|
 | 14 	| clone the repository in a new github repository in private mode 	| Done ✅    |
 | 15 	| share with ID: ```mason-chase```               	| Done ✅    |
 | 16 	| Event sourcing                     	| Not yet 	|
-| 17 	| A Valid email and a valid bank account check       	| Not yet 	|
-| 18 	| Docker-compose that loads database service automatically with ```docker-compose up``` 	|   Not yet 	|
+| 17 	| Docker-compose       	| ongoing 	|
+| 18 	| Swagger 	|    Done ✅ 	|
 | 19 	| Web UI      	| Not yet 	|
-| 20 	| Swagger     	| Not yet 	|
  
 
 * I have done a lot of researches to decide on the architecture (CA) I know it needs more work and updates. Presentation layer is missing and needs to be addressed. I just made a few choice to implement it.
@@ -66,3 +65,18 @@ During the project different aspects of the project is tested and below you may 
 
 ![](./docs/test-results.png)
 
+
+# HOW TO USE THE CODE BASE
+##UP AND RUNNING
+
+   (ongoing proccess of dockerizing the project) You may run the whole project as container using below:
+
+    # for the first time use 
+    docker-compose build
+    # then run up -d run containers in a dispatched mode
+    docker-compose up -d
+    
+## You may access Swagger documentation
+
+run --> php artisan l5-swagger:generate
+and browse http://127.0.0.1:8000/api/documentation
