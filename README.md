@@ -52,7 +52,7 @@ I have useed [this](https://github.com/Orphail/laravel-ddd "a suggested laravel 
 | 14 	| clone the repository in a new github repository in private mode 	| Done ✅    |
 | 15 	| share with ID: ```mason-chase```               	| Done ✅    |
 | 16 	| Event sourcing                     	| partially 	|
-| 17 	| Docker-compose       	| ongoing 	|
+| 17 	| Docker-compose       	| Done ✅ 	|
 | 18 	| Swagger 	|    Done ✅ 	|
 | 19 	| Web UI      	| Not yet 	|
  
@@ -78,5 +78,4 @@ During the project different aspects of the project is tested and below you may 
     
 ## You may access Swagger documentation
 
-run --> php artisan l5-swagger:generate
 and browse http://127.0.0.1:8000/api/documentation
