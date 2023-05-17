@@ -29,8 +29,7 @@ Understanding the project structure is essential for maintaining and extending t
       - Repositories
 
 
-I haven't seperated the presention layer (also the Adapters folder is there for any chance of refactoring) and all tests are in laravel default folder (it could be placed within each corresponding layer of my application.)
-I have useed [this](https://github.com/Orphail/laravel-ddd "a suggested laravel DDD and CA, without having to give away most of the features we love from Laravel"), [this](https://dev.to/bdelespierre/how-to-implement-clean-architecture-with-laravel-2f2i " a working implementation of the Clean Architecture principles inside a Laravel app") and [this](https://github.com/bdelespierre/laravel-clean-architecture-demo) for adapting the CA structure,
+Please note that I haven't separated the presentation layer, and all tests are currently in the default Laravel folder. In the future, I might consider placing them within each corresponding layer of the application. The "Adapters" folder is also there for any chance i get to do refactoring needed. I used various resources to adapt the Clean Architecture structure.
 
 
 ## RESULTS
@@ -51,25 +50,28 @@ I have useed [this](https://github.com/Orphail/laravel-ddd "a suggested laravel 
 | 13 	| create a pull request (code review)               | Done ✅ 	|
 | 14 	| clone the repository in a new github repository in private mode 	| Done ✅    |
 | 15 	| share with ID: ```mason-chase```               	| Done ✅    |
-| 16 	| Event sourcing                     	| partially 	|
+| 16 	| Event sourcing                     	| Partially implemented 	|
 | 17 	| Docker-compose       	| Done ✅ 	|
 | 18 	| Swagger 	|    Done ✅ 	|
-| 19 	| Web UI      	| Not yet 	|
+| 19 	| Web UI      	| Not yet completed	|
  
 
-* I have done a lot of researches to decide on the architecture (CA) I know it needs more work and updates. Presentation layer is missing and needs to be addressed. I just made a few choice to implement it.
-* For event sourcing, I'm attempting to incorporate the concept of Command-Query Responsibility Segregation (CQRS). It has been a little confusing, but unfortunately, I haven't been able to dedicate more time to it due to an impending deadline for task delivery. However, I recognize that it's an interesting challenge and I intend to invest more time in exploring and working on it in the future.
+I've put a lot of effort into researching and deciding on the architecture (CA). However, I acknowledge that there is still more work and updates needed, especially in addressing the missing presentation layer. I've made a few choices in the implementation, and I plan to continue refining and improving it.
+
+Regarding event sourcing, I have attempted to incorporate the concept of Command-Query Responsibility Segregation (CQRS). It has been a bit challenging, and unfortunately, due to a looming deadline for task delivery, I haven't been able to dedicate as much time to it as I would have liked. However, I recognize its importance and plan to invest more time in exploring and working on it in the future.
 
 ## TEST RESULTS
-During the project different aspects of the project is tested and below you may see the test results.
+Throughout the project, various aspects have been thoroughly tested. Here are the test results:
 
 ![](./docs/test-results.png)
 
 
 # HOW TO USE THE CODE BASE
+To get started with the code base, follow these instructions:
+
 ##UP AND RUNNING
 
-   (ongoing proccess of dockerizing the project) You may run the whole project as container using below:
+You can run the entire project as a container using the following commands:
 
     # for the first time use 
     docker-compose build
@@ -78,4 +80,4 @@ During the project different aspects of the project is tested and below you may 
     
 ## You may access Swagger documentation
 
-and browse http://127.0.0.1/api/documentation
+at: http://127.0.0.1/api/documentation
