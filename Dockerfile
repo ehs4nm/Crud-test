@@ -25,12 +25,6 @@ WORKDIR /var/www/html
 # Copy the project files to the working directory
 COPY . .
 
-# Set the working directory
-WORKDIR /var/www/html
-
-# Copy the project files to the working directory
-COPY . .
-
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
